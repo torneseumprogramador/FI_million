@@ -9,15 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vinibispo/clientes-million.git"
+    "url": "git+https://github.com/vinibispo/FI_million.git"
+               
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vinibispo/clientes-million/issues"
+    "url": "https://github.com/vinibispo/FI_million/issues"
   },
-  "homepage": "https://github.com/vinibispo/clientes-million#readme",
+  "homepage": "https://github.com/vinibispo/FI_million#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.9.9"
