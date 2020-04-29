@@ -14,32 +14,33 @@ describe('FundoImobiliario', ()=> {
   it('deveria criar um fundoimobiliario', async () => {
     const fundoimobiliario = await FundoImobiliario.create({
             nome: "TES1",
-            ir: false,
-            pais: "Brasil",
-            preoupos: true,
-            vencimento: new Date()
+            taxaRetMensal: 1.2,
+            indiceIfix: 3
         })
     expect(fundoimobiliario.nome).toBe("TES1")
   })
   it('deveria atualizar um fundoimobiliario', async () =>{
     const fundoimobiliario = await FundoImobiliario.create({
             nome: "TES1",
-            ir: false,
-            pais: "Brasil",
-            preoupos: true,
-            vencimento: new Date()
+            taxaRetMensal: 1.5,
+            indiceIfix: 3
         })
-    const novoFundoImobiliario = await FundoImobiliario.findByIdAndUpdate(fundoimobiliario._id, {nome: "TES2", taxa: 7.5, ir: true, pais: "Brasil", preoupos: true, vencimento: new Date()}, {new: true})
+    const novoFundoImobiliario = await FundoImobiliario.findByIdAndUpdate(
+      fundoimobiliario._id, 
+      {
+        nome: "TES2", 
+        taxaRetMensal: 1.4,
+        indiceIfix: 3
+      },{new: true}
+     )
     expect(novoFundoImobiliario.nome).toBe('TES2')
-    expect(novoFundoImobiliario.ir).toBe(true)
+    expect(novoFundoImobiliario.taxaRetMensal).toBe(1.4)
   })
   it('deveria remover um fundoimobiliario', async () => {
     const fundoimobiliario = await FundoImobiliario.create({
             nome: "TES1",
-            ir: false,
-            pais: "Brasil",
-            preoupos: true,
-            vencimento: new Date()
+            taxaRetMensal: 1.7,
+            indiceIfix: 3
         })
     await FundoImobiliario.findByIdAndRemove(fundoimobiliario._id, {})
     const fundoimobiliarioRemovido = await FundoImobiliario.findById(fundoimobiliario._id)
@@ -47,9 +48,7 @@ describe('FundoImobiliario', ()=> {
   })
 })
 /*
-  nome: {type: String, required: true, unique: true},
-  ir: {type: Boolean, required: true},
-  pais: {type: String, required: true},
-  preoupos: {type: Boolean, required: true},
-  vencimento: {type: Date, required: true, default:new Date().getDate()+1 }
+  nome: {type: String, required: true,unique: true},
+  taxaRetMensal: {type: Number},
+  indiceIfix: {type: Number}
 */
