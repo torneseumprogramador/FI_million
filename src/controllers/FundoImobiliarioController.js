@@ -42,13 +42,13 @@ create: async (req, res, next) => {
 
 
 change: async (req, res, next) => {
-    if (req.headers.token === TOKEN) {
-        const{nome, taxaRetMensal, indexIfix} = req.body
+    if (req.headers.token == TOKEN) {
+        const{nome, taxaRetMensal, indiceIfix} = req.body
         const{_id} = req.params
         try{
             await FundoImobiliario.findOneAndUpdate(
                 {_id:_id},{nome:nome,taxaRetMensal:taxaRetMensal,indiceIfix:indiceIfix})
-            return res.status(201).send('Alterado com sucesso');
+            return res.status(204).send('Alterado com sucesso');
             
         }catch(err){
             return res.status(401).send(err);
@@ -58,10 +58,10 @@ change: async (req, res, next) => {
 },
 
 delete: async (req, res, next) => {
-    if (req.headers.token === TOKEN) {
+    if (req.headers.token == TOKEN) {
      try{
         await FundoImobiliario.findByIdAndDelete(req.params._id)
-        return res.status(201).send({});
+        return res.status(204).send({});
         
         }catch(err){
             return res.status(401).send(err);
