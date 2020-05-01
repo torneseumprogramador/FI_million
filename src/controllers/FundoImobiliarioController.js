@@ -48,7 +48,7 @@ change: async (req, res, next) => {
         try{
             await FundoImobiliario.findOneAndUpdate(
                 {_id:_id},{nome:nome,taxaRetMensal:taxaRetMensal,indiceIfix:indiceIfix})
-            return res.status(204).send('Alterado com sucesso');
+            return res.status(204).send({message: 'Alterado com sucesso'});
             
         }catch(err){
             return res.status(401).send(err);
